@@ -1,25 +1,28 @@
-
-
 pub mod counter {
     pub fn message_counter(user_handle: &str, content: &str) -> u32 {
-        println!("searching for ...{}", user_handle);
+        // when you type the username and press Enter,
+        // this creates a newline at the end of the string,
+        // `trim` removes newlines of the string type.
+        //
+        // before trim: "robertedwardgrant137\n"
+        // after trim: "robertedwardgrant137"
+        let user_handle = user_handle.trim();
 
-        //splitting the string into lines 
-        let lines: Vec<&str> = content.lines().collect();
+        println!("searching for: {user_handle:#?}");
+
+        println!("Checking: {}", content);
 
         let mut count = 0;
 
-        for item in lines{
-            println!("Checking: {}", item);
-            if item.contains(user_handle){
-                println!("Match found: {}", item);
-                count += 1;
-            }
+        // the variable `content` only has only line,
+        // so we don't need to iter using `.lines()`
+        if content.contains(user_handle) {
+            println!("Match found");
+            count += 1;
         }
-        
+
         println!("Total matches: {}", count);
 
         count
     }
 }
-

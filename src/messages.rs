@@ -21,17 +21,17 @@ pub async fn get_messages(auth_token: &str) -> Result<(), Box<dyn Error>> {
         .await?;
 
 
-    let mut file = File::create("get_message_res.txt")?;
+    let mut file = File::create("get_message_res.json")?;
     file.write_all(res.as_bytes())?;
 
-    let contents = fs::read_to_string("get_message_res.txt")?;
+    let contents = fs::read_to_string("get_message_res.json")?;
     
     println!("input user handle:");
 
     let mut user_handle = String::new();
-     std::io::stdin().read_line(&mut user_handle).unwrap();
-
+    std::io::stdin().read_line(&mut user_handle).unwrap();
   
     message_counter(&user_handle, &contents);
+
     Ok(())
 }
