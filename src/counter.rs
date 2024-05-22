@@ -14,7 +14,7 @@ pub mod counter {
 
         let mut count = 0;
 
-        // the variable `content` only has only line,
+        // the variable `content` only has one line,
         // so we don't need to iter using `.lines()`
         if content.contains(user_handle) {
             println!("Match found");
